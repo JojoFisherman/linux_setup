@@ -5,10 +5,11 @@ cd ~
 # Repository
 echo "###########################adding repository###########################"
 sudo add-apt-repository -y "deb http://dl.google.com/linux/chrome/deb/ stable main"
-sudo add-apt-repository ppa:webupd8team/java
+sudo add-apt-repository -y ppa:webupd8team/java
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-sudo add-apt-repository ppa:numix/ppa
-sudo apt-add-repository ppa:neovim-ppa/stable
+sudo add-apt-repository -y ppa:numix/ppa
+sudo apt-add-repository -y ppa:neovim-ppa/stable
+sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
 
 # Update
@@ -26,6 +27,8 @@ screenfetch neovim
 
 # pip install
 echo "###########################pip installing###########################"
+sudo apt-get -y install python3.6
+sudo -H pip install virtualenv
 sudo -H pip3 install --upgrade pip
 sudo -H pip3 install requests scrapy Pillow beautifulsoup4 scipy ipython \
 jupyter pandas sympy nose lxml selenium apscheduler sklearn quandl pandas
