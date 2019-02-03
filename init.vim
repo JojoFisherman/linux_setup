@@ -3,7 +3,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 " set rtp+=$USERPROFILE\AppData\Local\nvim\.vim\bundle\Vundle.vim
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -17,7 +17,7 @@ Plugin 'w0rp/ale'
         \   'python': ['flake8'],
     \}
     let g:ale_fixers = {
-         \   'python': ['yapf']
+         \   'python': ['black']
     \}
     let g:ale_fix_on_save = 1
     let g:airline#extensions#ale#enabled = 1
@@ -29,6 +29,15 @@ Plugin 'davidhalter/jedi-vim'
 " Plugin 'Shougo/deoplete.nvim'
 "   let g:deoplete#enable_at_startup = 1
 "
+Plugin 'Valloric/YouCompleteMe'
+    let g:ycm_python_binary_path = '/Users/kwanwaichung/anaconda3/bin/python'
+    let g:ycm_global_ycm_extra_conf = expand("~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py")
+    let g:ycm_autoclose_preview_window_after_insertion = 1
+    let g:ycm_autoclose_preview_window_after_completion = 0
+    let g:ycm_filetype_whitelist = {'cpp': 1}
+    if !exists('g:ycm_semantic_triggers')
+      let g:ycm_semantic_triggers = {}
+    endif
 Plugin 'ncm2/ncm2'
 Plugin 'roxma/nvim-yarp'
         " enable ncm2 for all buffers
@@ -71,9 +80,9 @@ Plugin 'scrooloose/nerdcommenter'
 
 
 Plugin 'Chiel92/vim-autoformat'
-      let g:formatters_python = ['yapf']
+      let g:formatters_python = ['black']
       " let g:formatdef_black = '"black -l 79"'
-      let g:formatter_yapf_style = 'facebook'
+      " let g:formatter_yapf_style = 'facebook'
 
 Plugin 'xuhdev/SingleCompile'
 
@@ -171,7 +180,11 @@ filetype plugin indent on    " required
         let mapleader=","
 
       "AutoFormat
-      nnoremap <A-S-f> :Autoformat<CR>
+      if has("mac")
+        nnoremap Ï :Autoformat<CR>
+      else
+        nnoremap <A-S-f> :Autoformat<CR>
+      endif
 
       "SingleCompile
       map <F10> :SCCompileRun<cr>
@@ -180,7 +193,11 @@ filetype plugin indent on    " required
         map <leader>t :NERDTreeToggle<CR>
         map <leader>w <C-w>w
         " Set nerdtree to current folder
-        map <A-r> :NERDTreeFind<cr>
+        if has("MAC")
+          map ® :NERDTreeFind<cr>
+        else
+          map <A-r> :NERDTreeFind<cr>
+        endif
 
       "ALE
       nmap <silent> <leader>ej :ALENext<CR>
@@ -341,4 +358,4 @@ autocmd BufEnter Makefile setlocal noexpandtab
 autocmd BufEnter *.sh setlocal tabstop=2
 autocmd BufEnter *.sh setlocal shiftwidth=2
 autocmd BufEnter *.sh setlocal softtabstop=2
-augroup END
+augroup END<Paste>
