@@ -19,6 +19,7 @@ Plugin 'w0rp/ale'
     let g:ale_fixers = {
          \   'python': ['black']
     \}
+    let g:ale_python_black_options = "-l 79"
     let g:ale_fix_on_save = 1
     let g:airline#extensions#ale#enabled = 1
     let g:ale_echo_msg_error_str = 'E'
@@ -113,6 +114,8 @@ filetype plugin indent on    " required
       set mouse=a                 " Automatically enable mouse usage
       set mousehide               " Hide the mouse cursor while typing
       set backspace=indent,eol,start
+      set hidden
+      set fo-=t
 
       fu! SaveSess()
         execute 'mksession! ~/.vim/.session.vim'
@@ -298,6 +301,7 @@ filetype plugin indent on    " required
 
   " {
       set number              " show line numbers
+      set relativenumber 
       " nnoremap <leader>n :call NumberToggle()<cr> " to change between relative number
       autocmd InsertEnter * :set norelativenumber
       autocmd InsertLeave * :set relativenumber
@@ -325,6 +329,7 @@ filetype plugin indent on    " required
 
   " {
       set tabstop=4       " number of visual spaces per TAB
+      set shiftwidth=4       " number of visual spaces per TAB
       set softtabstop=4   " number of spaces in tab when editing
       set expandtab       " tabs are spaces
       set tw=79
@@ -335,11 +340,14 @@ augroup configgroup
 autocmd!
 autocmd VimEnter * highlight clear SignColumn
 au BufNewFile,BufRead *.ejs set filetype=html
+autocmd FileType cpp setlocal shiftwidth=2
+autocmd FileType cpp setlocal softtabstop=2
 autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md :%s/\s\+$//e
 "   autocmd FileType java setlocal noexpandtab
 "   autocmd FileType java setlocal list
 "   autocmd FileType java setlocal listchars=tab:+\ ,eol:-
 "   autocmd FileType java setlocal formatprg=par\ -w80\ -T4
+autocmd FileType html setlocal shiftwidth=2
 autocmd FileType tex setl updatetime=1
 autocmd FileType javascript setlocal tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2
