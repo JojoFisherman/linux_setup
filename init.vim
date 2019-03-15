@@ -30,15 +30,7 @@ Plugin 'davidhalter/jedi-vim'
 " Plugin 'Shougo/deoplete.nvim'
 "   let g:deoplete#enable_at_startup = 1
 "
-Plugin 'Valloric/YouCompleteMe'
-    let g:ycm_python_binary_path = '/Users/kwanwaichung/anaconda3/bin/python'
-    let g:ycm_global_ycm_extra_conf = expand("~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py")
-    let g:ycm_autoclose_preview_window_after_insertion = 1
-    let g:ycm_autoclose_preview_window_after_completion = 0
-    let g:ycm_filetype_whitelist = {'cpp': 1}
-    if !exists('g:ycm_semantic_triggers')
-      let g:ycm_semantic_triggers = {}
-    endif
+let g:python3_host_prog=system("which python | tr -d '\n'")
 Plugin 'ncm2/ncm2'
 Plugin 'roxma/nvim-yarp'
         " enable ncm2 for all buffers
@@ -184,7 +176,7 @@ filetype plugin indent on    " required
 
       "AutoFormat
       if has("mac")
-        nnoremap Ï :Autoformat<CR>
+        nnoremap √è :Autoformat<CR>
       else
         nnoremap <A-S-f> :Autoformat<CR>
       endif
@@ -197,7 +189,7 @@ filetype plugin indent on    " required
         map <leader>w <C-w>w
         " Set nerdtree to current folder
         if has("MAC")
-          map ® :NERDTreeFind<cr>
+          map ¬Æ :NERDTreeFind<cr>
         else
           map <A-r> :NERDTreeFind<cr>
         endif
@@ -259,6 +251,9 @@ filetype plugin indent on    " required
       if has('win32')
         nmap <C-/> <Plug>NERDCommenterToggle
         vmap <C-/> <Plug>NERDCommenterToggle
+      elseif has('MAC')
+        nmap √∑ <Plug>NERDCommenterToggle
+        vmap √∑ <Plug>NERDCommenterToggle
       else
         nmap <C-_> <Plug>NERDCommenterToggle
         vmap <C-_> <Plug>NERDCommenterToggle
@@ -366,4 +361,4 @@ autocmd BufEnter Makefile setlocal noexpandtab
 autocmd BufEnter *.sh setlocal tabstop=2
 autocmd BufEnter *.sh setlocal shiftwidth=2
 autocmd BufEnter *.sh setlocal softtabstop=2
-augroup END<Paste>
+augroup END<Paste><Paste>
