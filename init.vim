@@ -19,6 +19,7 @@ Plugin 'w0rp/ale'
     let g:ale_fixers = {
          \   'python': ['black']
     \}
+    let g:ale_python_flake8_options = "-ignore=E1,W"
     let g:ale_python_black_options = "-l 79"
     let g:ale_fix_on_save = 1
     let g:airline#extensions#ale#enabled = 1
@@ -30,7 +31,7 @@ Plugin 'davidhalter/jedi-vim'
 " Plugin 'Shougo/deoplete.nvim'
 "   let g:deoplete#enable_at_startup = 1
 "
-let g:python3_host_prog=system("which python | tr -d '\n'")
+let g:python3_host_prog=system("which python3 | tr -d '\n'")
 Plugin 'ncm2/ncm2'
 Plugin 'roxma/nvim-yarp'
         " enable ncm2 for all buffers
@@ -50,6 +51,7 @@ Plugin 'roxma/nvim-yarp'
         Plugin 'ncm2/ncm2-jedi'
         Plugin 'ncm2/ncm2-tmux'
 
+Plugin 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
@@ -65,7 +67,7 @@ Plugin 'vim-airline/vim-airline'
     let g:airline#extensions#tabline#fnamemod = ':t'
     let g:airline_powerline_fonts = 1
 
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'KwanWaiChung/nerdcommenter'
     " Add spaces after comment delimiters by default
     let g:NERDSpaceDelims = 1
     " Enable trimming of trailing whitespace when uncommenting
@@ -176,7 +178,7 @@ filetype plugin indent on    " required
 
       "AutoFormat
       if has("mac")
-        nnoremap √è :Autoformat<CR>
+        nnoremap Ï :Autoformat<CR>
       else
         nnoremap <A-S-f> :Autoformat<CR>
       endif
@@ -189,7 +191,7 @@ filetype plugin indent on    " required
         map <leader>w <C-w>w
         " Set nerdtree to current folder
         if has("MAC")
-          map ¬Æ :NERDTreeFind<cr>
+          map ® :NERDTreeFind<cr>
         else
           map <A-r> :NERDTreeFind<cr>
         endif
@@ -251,9 +253,6 @@ filetype plugin indent on    " required
       if has('win32')
         nmap <C-/> <Plug>NERDCommenterToggle
         vmap <C-/> <Plug>NERDCommenterToggle
-      elseif has('MAC')
-        nmap √∑ <Plug>NERDCommenterToggle
-        vmap √∑ <Plug>NERDCommenterToggle
       else
         nmap <C-_> <Plug>NERDCommenterToggle
         vmap <C-_> <Plug>NERDCommenterToggle
@@ -361,4 +360,4 @@ autocmd BufEnter Makefile setlocal noexpandtab
 autocmd BufEnter *.sh setlocal tabstop=2
 autocmd BufEnter *.sh setlocal shiftwidth=2
 autocmd BufEnter *.sh setlocal softtabstop=2
-augroup END<Paste><Paste>
+augroup END
